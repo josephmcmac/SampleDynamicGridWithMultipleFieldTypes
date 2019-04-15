@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="SampleDynamicGridWithMultipleFieldTypes.View.DynamicGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button
+            HorizontalAlignment="Left"
+            Width="100"
+            Grid.Row="0"
+            Command="{Binding AddButtonCommand}"
+            >
+            Add Row
+        </Button>
+        <DataGrid
+            ColumnHeaderStyle="{StaticResource CenterGridHeaderStyle}"
+            Grid.Row="1"
+            Name="XamlDataGrid"
+            ItemsSource="{Binding Rows}"
+            CanUserAddRows="False"
+            AutoGenerateColumns="False"
+        >
+        </DataGrid>
+    </Grid>
+</UserControl>
